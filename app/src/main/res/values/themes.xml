@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.HeroesApp" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.HeroesApp" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorOnPrimary">@color/primaryColor</item>
@@ -9,5 +9,4 @@
         <item name="colorOnSecondary">@color/black</item>
     </style>
 
-    <style name="Theme.HeroesApp" parent="Base.Theme.HeroesApp" />
 </resources>
