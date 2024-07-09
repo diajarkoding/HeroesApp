@@ -1,5 +1,6 @@
 package com.example.heroesapp.adapter
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heroesapp.model.Hero
 import com.example.heroesapp.R
+import com.example.heroesapp.ui.DetailActivity
 
 class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +34,11 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
         holder.imgPhoto.setImageResource(photo)
         holder.tvDescription.text = description
         holder.tvName.text = name
+
+        holder.itemView.setOnClickListener {
+            var goDetail = Intent(holder.itemView.context, DetailActivity::class.java)
+            holder.itemView.context.startActivity(goDetail)
+        }
     }
 
 
