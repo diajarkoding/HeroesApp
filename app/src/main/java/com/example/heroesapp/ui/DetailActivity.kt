@@ -45,6 +45,7 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
+
         val dataHero = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
             intent.getParcelableExtra<Hero>(EXTRA_HERO, Hero::class.java)
         } else {
@@ -52,13 +53,12 @@ class DetailActivity : AppCompatActivity() {
             intent.getParcelableExtra<Hero>(EXTRA_HERO)
         }
         if (dataHero != null) {
-            binding.nameDetailHero.text = dataHero.name
+            supportActionBar?.title = dataHero.name
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
             Glide.with(this@DetailActivity).load(dataHero.photo).into(binding.imgDetailHero)
             binding.tvDetailDescription.text = dataHero.description
-        }
-
-        binding.icBackDetail.setOnClickListener{
-            finish()
         }
 
         binding.fabShare.setOnClickListener {
@@ -67,5 +67,9 @@ class DetailActivity : AppCompatActivity() {
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, "Send To"))
         }
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }
